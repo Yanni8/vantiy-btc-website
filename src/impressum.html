@@ -26,7 +26,24 @@
     </nav>
 
     <main>
-        <p>content goes here</p>
+        <h1>Impressum</h1>
+
+        <p>E-Mail Address: <a href="mailto:vanity-btc@fusiva.ch">vanity-btc@fusiva.ch</a></p>
+
+        <h2>Kontakt Formular</h2>
+        <form action="./scripts/formular.php">
+
+            <label for="name">Name:</label>
+            <input type="text" name="name" id="name" placeholder="Your Name" required>
+            
+            <label for="email">E-Mail:</label>
+            <input type="email" name="email" id="email" placeholder="youre-mail@example.com" required>
+
+            <label for="message">Nachricht:</label>
+            <textarea name="message" placeholder="Deine Nachricht" class="text-input" id="message" cols="30" rows="10" required></textarea>
+
+            <input type="submit" class="button" value="send">
+        </form>
     </main>
 
     <footer>

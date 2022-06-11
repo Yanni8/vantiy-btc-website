@@ -5,19 +5,18 @@
 }
 
 body {
+
     font-family: 'Roboto', sans-serif;
     margin: 0;
     padding: 0;
 
 }
-header,
-main,
-footer,
-nav,
-aside {
+
+body {
     display: grid;
+    min-height: 100%;
     grid-template-columns: 1fr;
-    grid-template-rows: 20% 70% 10%;
+    grid-template-rows: auto 1fr auto;
     grid-template-areas:
         "nav"
         "main"
@@ -28,6 +27,7 @@ aside {
 main {
     grid-area: main;
 }
+
 
 
 /* Header */
@@ -79,6 +79,7 @@ nav {
 }
 
 
+
 /* Footer */
 
 footer {
@@ -88,16 +89,18 @@ footer {
     justify-content: space-between;
 }
 
-footer p{
+footer p {
     color: white;
-    padding: 1em;
+    padding: 0.5em;
 }
-footer ul{
+
+footer ul {
     display: flex;
 }
+
 footer ul li {
     list-style: none;
-    padding: 1em;
+    padding: 0.5em;
 }
 
 footer a {
@@ -105,5 +108,62 @@ footer a {
     color: white;
 }
 
+p>a {
+    color: black;
+}
+
+
+/* Main */
+
+main {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 50%;
+    height: 50%;
+}
+
+form>input {
+    padding: 0.5em;
+    margin: 0.5em;
+    border: 1px solid black;
+
+}
+
+.text-input {
+    width: 100%;
+}
+
+
+form input,
+textarea {
+    border: 2px solid black;
+    background: white;
+}
+
+textarea{
+    height: 10em;
+    resize: none;
+
+}
+.button {
+    padding-left: 1.5em;
+    padding-right: 1.5em;
+    border: 2px solid black;
+    background: white;
+}
+
+.button:hover {
+    background: linear-gradient(grey, white);
+    color: white;
+}
 
 @media screen and (max-width: 600px) {}
