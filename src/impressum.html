@@ -1,13 +1,14 @@
 <!DOCTYPE html>
-<html>
+<html lang="de">
 
 <head>
     <meta charset='utf-8'>
     <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+    <meta name="description" content="Free Vanity-BTC Generator">
+    <meta name="keywords" content="BTC, Bitcoin, Vanity Bitcoin, Cryptocurency">
     <title>Vanity BTC</title>
     <meta name='viewport' content='width=device-width, initial-scale=1'>
     <link rel='stylesheet' type='text/css' media='screen' href='./styles/main.css'>
-    <script src='./scripts/main.js'></script>
 </head>
 
 <body>
@@ -20,9 +21,9 @@
                 <li><a href='./howtouseit.html'>How to use it</a></li>
                 <li><a href='./howitworks.html'>How it works</a></li>
                 <li><a href='./disclaimer.html'>Disclaimer</a></li>
-                <li><a href='./impressum.html'>impressum</a></li>
+                <li class="current-tap"><a href='./impressum.html'>impressum</a></li>
+            </ul>
         </div>
-        </ul>
     </nav>
 
     <main>
@@ -35,14 +36,15 @@
 
             <label for="name">Name:</label>
             <input type="text" name="name" id="name" placeholder="Your Name" required>
-            
+
             <label for="email">E-Mail:</label>
             <input type="email" name="email" id="email" placeholder="youre-mail@example.com" required>
 
             <label for="message">Nachricht:</label>
-            <textarea name="message" placeholder="Deine Nachricht" class="text-input" id="message" cols="30" rows="10" required></textarea>
+            <textarea name="message" placeholder="Deine Nachricht" class="text-input" id="message" cols="30" rows="10"
+                required></textarea>
 
-            <input type="submit" class="button" value="send">
+            <input type="submit" class="button custom-button" value="send">
         </form>
     </main>
 
@@ -53,6 +55,8 @@
             <li><a href='./impressum.html'>Impressum</a></li>
         </ul>
     </footer>
+
+
 </body>
 
 </html>

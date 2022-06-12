@@ -1,13 +1,14 @@
 <!DOCTYPE html>
-<html>
+<html lang="de">
 
 <head>
     <meta charset='utf-8'>
     <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+    <meta name="description" content="Free Vanity-BTC Generator">
+    <meta name="keywords" content="BTC, Bitcoin, Vanity Bitcoin, Cryptocurency">
     <title>Vanity BTC</title>
     <meta name='viewport' content='width=device-width, initial-scale=1'>
     <link rel='stylesheet' type='text/css' media='screen' href='./styles/main.css'>
-    <script src='./scripts/main.js'></script>
 </head>
 
 <body>
@@ -16,17 +17,38 @@
         <div class="logo"><a href="./index.html">Vanity BTC</a></div>
         <div class="nav-links">
             <ul id="top-navigator">
-                <li><a href='./index.html'>Home</a></li>
+                <li class="current-tap"><a href='./index.html'>Home</a></li>
                 <li><a href='./howtouseit.html'>How to use it</a></li>
                 <li><a href='./howitworks.html'>How it works</a></li>
                 <li><a href='./disclaimer.html'>Disclaimer</a></li>
                 <li><a href='./impressum.html'>impressum</a></li>
+
+            </ul>
         </div>
-        </ul>
     </nav>
 
     <main>
-        <p>content goes here</p>
+        <h1>Vanity BTC Generator</h1>
+        <p>
+            Generiere eine zufälligen Vanity BTC Adresse. BTC Addressen werden mithilfe von base58 erstellt. Aus diesem
+            Grund kann
+            die Addresse nur aus Nummern und Buchstaben ausgenommen l (klein L), O (gross o) und I (gross i) bestehen.
+            Dass generieren von BTC Addressen ist exponentiel Aufänding. Aus diesem Grund sollten maximal 4-5 Buchstaben
+            verwendet werden.
+        </p>
+        <form>
+            <label for="vanity-prefix">
+                Generate from Prefix (Fast)
+            </label>
+            <input class="vanity-btc-input" type="text" id="vanity-prefix" name="vanity-prefix"
+                placeholder="Vanity Prefix" pattern="^[a-zA-HJ-NP-Z0-9]*$" required>
+            <label for="vanity-regex">
+                Generate from RegEx (Slow)
+            </label>
+            <input class="vanity-btc-input" type="text" id="vanity-regex" name="vanity-regex" placeholder="Vanity RegEx"
+                pattern="^[^lOI]*$" required>
+            <input type="submit" class="button custom-button" value="Generate">
+        </form>
     </main>
 
     <footer>
@@ -36,6 +58,11 @@
             <li><a href='./impressum.html'>Impressum</a></li>
         </ul>
     </footer>
+
+    <!--Link to script to validate inputs-->
+    <script src='./scripts/input-validator.js'></script>
+
+
 </body>
 
 </html>

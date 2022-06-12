@@ -2,7 +2,10 @@
 
 * {
     box-sizing: border-box;
+    text-align: center;
 }
+
+
 
 body {
 
@@ -11,10 +14,18 @@ body {
     padding: 0;
 
 }
-html, body  {
+
+html,
+body {
     width: 100%;
     height: 100%;
 }
+
+p {
+    max-width: 80ch;
+    font-size: 1.1em;
+}
+
 body {
     display: grid;
     min-height: 100%;
@@ -38,11 +49,12 @@ main {
 nav {
     grid-area: nav;
     display: flex;
-    background-color: #888888;
+    background-color: black;
     /* Maby change it later */
     align-items: center;
-    position: sticky;
+    position: fixed;
     top: 0;
+    width: 100%;
     justify-content: space-between;
 }
 
@@ -78,16 +90,19 @@ nav {
 }
 
 .nav-links li:hover {
-    background-color: darkgrey;
+    background-color: #9a0808;
 }
 
-
+.current-tap {
+    background-color: #9a0808;
+}
 
 /* Footer */
 
 footer {
+    margin-top: 1em ;
     grid-area: footer;
-    background-color: #888888;
+    background-color: black;
     display: flex;
     justify-content: space-between;
 }
@@ -152,21 +167,30 @@ textarea {
     background: white;
 }
 
-textarea{
+textarea {
     height: 10em;
     resize: none;
 
 }
+
 .button {
     padding-left: 1.5em;
     padding-right: 1.5em;
+    min-width: 8em;
     border: 2px solid black;
     background: white;
 }
-
-.button:hover {
-    background: linear-gradient(grey, white);
+.custom-button:hover {
+    background-color: #9a0808;
+    /* Fallback if browser doesnt support line-gradient */
+    background: linear-gradient(135deg, rgb(0, 0, 0), 70%, rgb(255, 0, 0));
     color: white;
-}
 
-@media screen and (max-width: 600px) {}
+}
+label {
+    font-size: 1.2em;
+    margin: 0.5em;
+}
+@media screen and (max-width: 700px) {
+    /*TODO: implement Burger Layout*/
+}
