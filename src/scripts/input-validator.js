@@ -9,6 +9,7 @@ function inputValidatorBTC(target){
         }
     }
 
+
 }
 
 document.addEventListener('DOMContentLoaded', function () {

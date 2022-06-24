@@ -25,35 +25,31 @@
         <div class="nav-links">
             <ul id="top-navigator">
                 <li><a href='./index.html'>Home</a></li>
-                <li><a href='./howtouseit.html'>How to use it</a></li>
+                <li class="current-tap"><a href='./howtouseit.html'>How to use it</a></li>
                 <li><a href='./howitworks.html'>How it works</a></li>
                 <li><a href='./disclaimer.html'>Disclaimer</a></li>
-                <li class="current-tap"><a href='./impressum.html'>Impressum</a></li>
+                <li><a href='./impressum.html'>Impressum</a></li>
             </ul>
         </div>
 
     </nav>
 
     <main>
-        <h1>Impressum</h1>
+        <h1>Allgemein</h1>
+        <p>
+            Falls du deine generierte BTC Addresse verwenden möchtest solltest du deinen generierten Seed Phrase auf ein
+            Blatt schreiben und es sicher verwahren. Dieses Seed Phraes beinhaltet alle wichtigen Informationen zu
+            deiner Wallet Addresse. Teile diesen Seed Phrase <strong>niemals</strong> mit anderen Personen. Dieser Seed
+            beinhaltet alle wichtigen Informationen, um ihr Wallet im Notfall wiederzu herstellen.
+        </p>
 
-        <p>E-Mail Address: <a href="mailto:vanity-btc@fusiva.ch">vanity-btc@fusiva.ch</a></p>
-
-        <h2>Kontakt Formular</h2>
-        <form method="GET" action="./scripts/formular.php">
-
-            <label for="name">Name:</label>
-            <input type="text" name="name" id="name" placeholder="Your Name" required>
-
-            <label for="email">E-Mail:</label>
-            <input type="email" name="email" id="email" placeholder="youre-mail@example.com" required>
-
-            <label for="commentar">Nachricht:</label>
-            <textarea name="commentar" placeholder="Deine Nachricht" class="text-input" id="commentar" cols="30"
-                rows="10" required></textarea>
-
-            <input type="submit" class="button custom-button" value="Send" text="Send">
-        </form>
+        <h1>Importieren der Addresse in Exodus (Für Desktop)</h1>
+        <h2>Download Exodus</h2>
+        <p>
+            Um die generierte Addresse in Exodus zu Importieren müssen Sie zuerst das Exodus Wallet herunterlanden und
+            installieren <a href="https://www.exodus.io/download">Exodus Wallet herunterladen</a>.
+        </p>
+        <h1>Importieren der Addresse in CakeWallet (Für IOS/Android)</h1>
     </main>
 
     <footer>
@@ -65,6 +61,8 @@
     </footer>
 
     <script src="./scripts/hamburger-layout.js"></script>
+
+
 
 </body>
 

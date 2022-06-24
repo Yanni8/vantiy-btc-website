@@ -14,17 +14,24 @@
 <body>
 
     <nav>
-        <div class="logo"><a href="./index.html">Vanity BTC</a></div>
-        <div class="nav-links">
-            <ul id="top-navigator">
-                <li class="current-tap"><a href='./index.html'>Home</a></li>
-                <li><a href='./howtouseit.html'>How to use it</a></li>
-                <li><a href='./howitworks.html'>How it works</a></li>
-                <li><a href='./disclaimer.html'>Disclaimer</a></li>
-                <li><a href='./impressum.html'>Impressum</a></li>
-
-            </ul>
+        <div id="top">
+            <div class="logo"><a href="./index.html">Vanity BTC</a></div>
+            <div class="" id="hamburger-layout" onclick="toggle()">
+                <div class="bar1"></div>
+                <div class="bar2"></div>
+                <div class="bar3"></div>
+            </div>
         </div>
+        <div class="nav-links">
+                <ul id="top-navigator">
+                    <li class="current-tap"><a href='./index.html'>Home</a></li>
+                    <li><a href='./howtouseit.html'>How to use it</a></li>
+                    <li><a href='./howitworks.html'>How it works</a></li>
+                    <li><a href='./disclaimer.html'>Disclaimer</a></li>
+                    <li><a href='./impressum.html'>Impressum</a></li>
+                </ul>
+        </div>
+
     </nav>
 
     <main>
@@ -36,7 +43,7 @@
             Dass generieren von BTC Addressen ist exponentiel Aufänding. Aus diesem Grund sollten maximal 4-5 Buchstaben
             verwendet werden.
         </p>
-        <form>
+        <form action="javascript:void(0);">
             <label for="vanity-prefix">
                 Generate from Prefix (Fast)
             </label>
@@ -47,7 +54,7 @@
             </label>
             <input class="vanity-btc-input" type="text" id="vanity-regex" name="vanity-regex" placeholder="Vanity RegEx"
                 pattern="^[^lOI]*$" required>
-            <input type="submit" class="button custom-button" value="Generate">
+            <input type="submit" class="button custom-button" id="generate-btc-address" value="Generate">
         </form>
     </main>
 
@@ -61,6 +68,15 @@
 
     <!--Link to script to validate inputs-->
     <script src='./scripts/input-validator.js'></script>
+    <!--Maby remove it after I implemented sha256 by my own-->
+    <script type="modul" src="node_modules/base58-js/public/binary_to_base58.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/3.1.9-1/crypto-js.js"></script>
+    </head>
+    <!--Script to generate BTC Address-->
+    <script src="./scripts/vanity-btc-generator.js"></script>
+
+    <script src="./scripts/hamburger-layout.js"></script>
+
 
 
 </body>

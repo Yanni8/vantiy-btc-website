@@ -1,11 +1,12 @@
 <?php
-$mysqli = new mysqli('localhost','root','true','janebyxa_vanitybtc', "3306");
-
-//Output any connection error
-if ( ! $mysqli) {
+function exception_handler($exception) {
     header("HTTP/1.1 500 International Server Error");
-    die();
+    die("Plase try again later.");
 }
+ 
+set_exception_handler('exception_handler');
+
+$mysqli = new mysqli('localhost','root','true','janebyxa_vanitybtc', "3306");
 
 $mysqli->set_charset('utf8');
 

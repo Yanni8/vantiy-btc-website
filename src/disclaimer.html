@@ -14,17 +14,26 @@
 <body>
 
     <nav>
-        <div class="logo"><a href="./index.html">Vanity BTC</a></div>
-        <div class="nav-links">
-            <ul id="top-navigator">
-                <li><a href='./index.html'>Home</a></li>
-                <li><a href='./howtouseit.html'>How to use it</a></li>
-                <li><a href='./howitworks.html'>How it works</a></li>
-                <li class="current-tap"><a href='./disclaimer.html'>Disclaimer</a></li>
-                <li><a href='./impressum.html'>Impressum</a></li>
+        <div id="top">
+            <div class="logo"><a href="./index.html">Vanity BTC</a></div>
+            <div class="" id="hamburger-layout" onclick="toggle()">
+                <div class="bar1"></div>
+                <div class="bar2"></div>
+                <div class="bar3"></div>
+            </div>
         </div>
-        </ul>
+        <div class="nav-links">
+                <ul id="top-navigator">
+                    <li><a href='./index.html'>Home</a></li>
+                    <li><a href='./howtouseit.html'>How to use it</a></li>
+                    <li><a href='./howitworks.html'>How it works</a></li>
+                    <li class="current-tap"><a href='./disclaimer.html'>Disclaimer</a></li>
+                    <li><a href='./impressum.html'>Impressum</a></li>
+                </ul>
+        </div>
+
     </nav>
+
 
     <main>
         <h1>Disclaimer</h1>
@@ -86,7 +95,8 @@
             <li><a href='./impressum.html'>Impressum</a></li>
         </ul>
     </footer>
-
+    
+    <script src="./scripts/hamburger-layout.js"></script>
 </body>
 
 </html>
