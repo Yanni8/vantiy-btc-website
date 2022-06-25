@@ -103,7 +103,7 @@ function publicKeyToAddress(publicKey) {
     publicKey = CryptoJS.RIPEMD160(CryptoJS.SHA256(publicKey));
     publicKey = "00" + publicKey.toString();
     checksum = (CryptoJS.SHA256(CryptoJS.SHA256(CryptoJS.enc.Hex.parse(publicKey))).toString()).substring(0, 8);
-    return "1" + base58Check(publicKey + checksum).replace(/^1*/, '');;
+    return  base58Check(publicKey + checksum).replace(/^1*/, '');;
 }
 
 function generateBTC(prefix, regex) {
@@ -111,27 +111,27 @@ function generateBTC(prefix, regex) {
     if (regex == "") {
 
         searched = prefix;
-        var regex = new RegExp(searched, "i");
+        var regex = new RegExp("^"+searched, "i");
         do {
             privateKey = pseudoRandomPrivateKey();
             publicKey = privateToPubl(privateKey);
             address = publicKeyToAddress(publicKey);
         } while (!address.match(regex));
+        address = "1" + address;
     } else {
         
         searched = regex;
         do {
             privateKey = pseudoRandomPrivateKey();
             publicKey = privateToPubl(privateKey);
-            address = publicKeyToAddress(publicKey);
+            address = "1" + publicKeyToAddress(publicKey);
         } while (!address.match(searched));
     }
-
-    console.log("Found: ", "\n", "PrivateKey: " + privateKey, "\n", "PublicKey: " + publicKey, "\n", "Address: " + address)
-
+    this.self.postMessage([privateKey, publicKey, address]);
 }
 let document = undefined
 self.addEventListener("message", function(message) {
+    
     data = message.data;
     generateBTC(data[0], data[1])
 

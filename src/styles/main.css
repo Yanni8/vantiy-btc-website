@@ -188,7 +188,11 @@ input[type=text] {
      box-shadow: 0px 0px 1rem #9a0808;
      color: white;
 }
-
+#vanity-output h1{
+     font-size: 1.5rem;
+     margin: 2rem;
+     margin-top: 3rem;
+}
 label {
      font-size: 1.2rem;
      margin: 0.5rem;
@@ -209,6 +213,10 @@ label {
 }
 
 #hamburger-layout {
+     display: none;
+}
+
+.hidden{
      display: none;
 }
 
