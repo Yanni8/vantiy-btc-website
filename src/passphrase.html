@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="de">
+
+<head>
+    <meta charset='utf-8'>
+    <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+    <meta name="description" content="Free Vanity-BTC Generator">
+    <meta name="keywords" content="BTC, Bitcoin, Vanity Bitcoin, Cryptocurency">
+    <title>Vanity BTC</title>
+    <meta name='viewport' content='width=device-width, initial-scale=1'>
+    <link rel='stylesheet' type='text/css' media='screen' href='./styles/main.css'>
+</head>
+
+<body>
+
+    <nav>
+        <div id="top">
+            <div class="logo"><a href="./index.html">Vanity BTC</a></div>
+            <div class="" id="hamburger-layout" onclick="toggle()">
+                <div class="bar1"></div>
+                <div class="bar2"></div>
+                <div class="bar3"></div>
+            </div>
+        </div>
+        <div class="nav-links">
+            <ul id="top-navigator">
+                <li><a href='./index.html'>Home</a></li>
+                <li class="current-tap"><a href='./passphrase.html'>Vanity Passphrase</a></li>
+                <li><a href='./howitworks.html'>How it works</a></li>
+                <li><a href='./disclaimer.html'>Disclaimer</a></li>
+                <li><a href='./impressum.html'>Impressum</a></li>
+            </ul>
+        </div>
+
+    </nav>
+
+    <main>
+        <h1>Passphrase BTC</h1>
+        <p>
+            Bitcoinaddressen sind sehr schwehr zu merken und können auch nach dem löschen des PrivateKeys nichtmehr
+            wiederherstellt werden. Um zu vermeiden, dass man lange Private Keys oder Memorical Seeds aufschreiben muss
+            gibt es eine einfachere Alternative. Durch das generieren einer Bitcoin addresse von einem Passphras braucht
+            man sich lediglich diesen zu merken um das Wallet wieder herzustellen. Dieser wird durch den
+            Haschlagorythmus SHA256 (Nicht umkehrbar) in ein Private Key verwandelt. Natürlich hat es einen Einfluss auf
+            die Sicherheit, wie schwehr der Passphras zu erraten ist.
+        </p>
+
+        <h2>Erstelle oder wiederherstellen einer Passphrase Addresse</h2>
+        <form id="passphrase-form">
+            <input type="text" name="passphrase" id="passphrase-input" placeholder="Passphrase" required>
+            <input type="submit" class="button custom-button" value="Generieren">
+        </form>
+
+
+            <div class="output hidden" id="passphrase-output">
+                <h1>Deine PassPhrase-BTC Addresse: </h1>
+                <p>PrivateKey </p>
+                <p id="private-key"></p>
+                <p>PublicKey </p>
+                <p id="public-key"></p>
+                <p>BTC Address </p>
+                <p id="btc-address"></p>
+            </div>
+    </main>
+
+    <footer>
+        <p>&copy; 2020 YM</p>
+        <ul>
+            <li><a href='./disclaimer.html'>Disclaimer</a></li>
+            <li><a href='./impressum.html'>Impressum</a></li>
+        </ul>
+    </footer>
+
+
+    <script src="./scripts/passphrase.js"></script>
+
+    <!--Used to create Hamburger Layout for Mobile devices-->
+    <script src="./scripts/hamburger-layout.js"></script>
+
+
+
+</body>
+
+</html>

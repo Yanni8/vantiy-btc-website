@@ -25,7 +25,7 @@
         <div class="nav-links">
                 <ul id="top-navigator">
                     <li class="current-tap"><a href='./index.html'>Home</a></li>
-                    <li><a href='./howtouseit.html'>How to use it</a></li>
+                    <li><a href='./passphrase.html'>Vanity Passphrase</a></li>
                     <li><a href='./howitworks.html'>How it works</a></li>
                     <li><a href='./disclaimer.html'>Disclaimer</a></li>
                     <li><a href='./impressum.html'>Impressum</a></li>
@@ -54,8 +54,14 @@
             </label>
             <input class="vanity-btc-input" type="text" id="vanity-regex" name="vanity-regex" placeholder="Vanity RegEx"
                 pattern="^[^lOI]*$" required>
+            <label for="vanity-cpu-cores">
+                Number of CPU Cores:
+            </label>
+            <input class="vanity-btc-input" type="number" id="vanity-cpu-cores" name="vanity-cpu-cores" min="1"
+                value="1" required>
             <input type="submit" class="button custom-button" id="generate-btc-address" value="Generate">
         </form>
+
         <div class="output hidden" id="vanity-output">
             <h1>Deine Vanity-BTC Addresse: </h1>
             <p>PrivateKey </p><p id="private-key"></p>
@@ -72,15 +78,13 @@
         </ul>
     </footer>
 
+    
+    </head>
     <!--Link to script to validate inputs-->
     <script src='./scripts/input-validator.js'></script>
-
-    <script src='./external_lib/Base58.js'></script>
-    <!--Maby remove it after I implemented sha256 by my own-->
-    </head>
     <!--Script to generate BTC Address-->
     <script src="./scripts/vanity-btc-worker.js"></script>
-
+    <!--Used to create Hamburger Layout for Mobile devices-->
     <script src="./scripts/hamburger-layout.js"></script>
 
 

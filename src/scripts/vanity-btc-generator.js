@@ -5,11 +5,8 @@ GX = 550662630222773436695787188951685343262506034537775941755001873603891167292
 GY = 32670510020758816978083085130507043184471273380659243275938904335757337482424n
 G = [GX, GY]
 BASE58_ALPHABET = "123456789ABCDEFGHJKLMNPQRSTUVWXYZabcdefghijkmnopqrstuvwxyz"
-importScripts("https://cdnjs.cloudflare.com/ajax/libs/crypto-js/3.1.9-1/crypto-js.js");
 
-function binary_to_base58(binary) {
 
-}
 
 function pseudoRandomPrivateKey() {
     return CryptoJS.SHA256((Math.random() * 25e12).toString()).toString()
@@ -63,15 +60,15 @@ function inverseMod(a, m) {
 }
 
 function privateToPubl(privateKey) {
-    var sha256Dec = BigInt(BigInt("0x" + privateKey).toString(10))
-    Q = G
+    sha256Dec = BigInt(BigInt("0x" + privateKey).toString(10));
+    Q = G;
     publicKey = undefined;
     while (sha256Dec) {
         if (sha256Dec % 2n == 1n) {
             if (publicKey == undefined) {
-                publicKey = Q
+                publicKey = Q;
             } else {
-                publicKey = point_add(publicKey, Q)
+                publicKey = point_add(publicKey, Q);
             }
         }
         Q = point_dubl(Q)
@@ -103,36 +100,47 @@ function publicKeyToAddress(publicKey) {
     publicKey = CryptoJS.RIPEMD160(CryptoJS.SHA256(publicKey));
     publicKey = "00" + publicKey.toString();
     checksum = (CryptoJS.SHA256(CryptoJS.SHA256(CryptoJS.enc.Hex.parse(publicKey))).toString()).substring(0, 8);
-    return  base58Check(publicKey + checksum).replace(/^1*/, '');;
+    return "1" + base58Check(publicKey + checksum).replace(/^1*/, '');;
 }
 
+function generateFromSeed(seed) {
+    privateKey = CryptoJS.SHA256(seed).toString();
+    publicKey = privateToPubl(privateKey);
+    address = publicKeyToAddress(publicKey);
+    this.self.postMessage([privateKey, publicKey, address]);
+}
 function generateBTC(prefix, regex) {
     console.log("Generating BTC address...")
     if (regex == "") {
 
-        searched = prefix;
-        var regex = new RegExp("^"+searched, "i");
+        searched = "1" + prefix;
         do {
             privateKey = pseudoRandomPrivateKey();
             publicKey = privateToPubl(privateKey);
             address = publicKeyToAddress(publicKey);
-        } while (!address.match(regex));
-        address = "1" + address;
+        } while (!address.startsWith(searched));
+
     } else {
-        
+
         searched = regex;
         do {
             privateKey = pseudoRandomPrivateKey();
             publicKey = privateToPubl(privateKey);
-            address = "1" + publicKeyToAddress(publicKey);
+            address = publicKeyToAddress(publicKey);
         } while (!address.match(searched));
     }
     this.self.postMessage([privateKey, publicKey, address]);
 }
-let document = undefined
-self.addEventListener("message", function(message) {
-    
+
+self.addEventListener("message", function (message) {
+    importScripts("https://cdnjs.cloudflare.com/ajax/libs/crypto-js/3.1.9-1/crypto-js.js");
     data = message.data;
-    generateBTC(data[0], data[1])
+    if(typeof data == "string"){
+        generateFromSeed(data);
+        return
+    }
+    generateBTC(data[0], data[1]);
 
 }, false);
+
+function fromSeed() { }
