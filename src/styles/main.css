@@ -218,7 +218,7 @@ label {
           padding-right: 1.5rem;
      }
      textarea {
-          height: 7rem;
+          min-height: 5rem;
      }
 
      nav {

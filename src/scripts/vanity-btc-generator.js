@@ -4,11 +4,18 @@ P = 1157920892373161954235709850086879078532699846656405640394575840079088346716
 GX = 55066263022277343669578718895168534326250603453777594175500187360389116729240n
 GY = 32670510020758816978083085130507043184471273380659243275938904335757337482424n
 G = [GX, GY]
-import {binary_to_base58} from base58
+BASE58_ALPHABET = "123456789ABCDEFGHJKLMNPQRSTUVWXYZabcdefghijkmnopqrstuvwxyz"
+importScripts("https://cdnjs.cloudflare.com/ajax/libs/crypto-js/3.1.9-1/crypto-js.js");
+
+function binary_to_base58(binary) {
+
+}
 
 function pseudoRandomPrivateKey() {
-    return CryptoJS.SHA256((Math.random() * 25e12).toString() + (Math.random() * 250e12).toString()).toString()
+    return CryptoJS.SHA256((Math.random() * 25e12).toString()).toString()
 }
+
+
 
 function point_dubl(p1) {
     lam = BigInt((3n * p1[0] * p1[0] + A) * inverseMod(2n * p1[1], P))
@@ -71,7 +78,7 @@ function privateToPubl(privateKey) {
         sha256Dec = sha256Dec / 2n
     }
 
-    hex = publicKey[0].toString(16);
+    hex = publicKey[0].toString(16).toUpperCase();
 
     if (publicKey[1] % 2n == 1n) {
         return "03" + hex;
@@ -80,39 +87,52 @@ function privateToPubl(privateKey) {
 }
 
 
-
-function publicKeyToAddress(publicKey) {
-    sha256 = CryptoJS.SHA256(publicKey).toString()
-    address = CryptoJS.RIPEMD160(sha256).toString()
-    binary_to_base58(address)
+function base58Check(address) {
+    n = BigInt("0x" + address)
+    address = ""
+    while (n > 0) {
+        x = n % 58n
+        n = n / 58n
+        address = BASE58_ALPHABET[x] + address
+    }
     return address
 }
-
-function generateBTC() {
-    for (element of document.getElementsByClassName("vanity-btc-input")) {
-        prefix = element.value;
-        if (element.value != undefined) {
-            found = false;
-            console.log(prefix)
-            while (!found) {
-                let privateKey = pseudoRandomPrivateKey();
-                publicKey = privateToPubl(privateKey);
-                let adress = publicKeyToAddress(publicKey);
-                console.log(privateKey, adress);
-                if (adress.startsWith(prefix)) {
-                    found = true;
-                }
-
-            }
-        }
-    }
-
+function publicKeyToAddress(publicKey) {
+    //Parses the public key from hex to binary data
+    publicKey = CryptoJS.enc.Hex.parse(publicKey);
+    publicKey = CryptoJS.RIPEMD160(CryptoJS.SHA256(publicKey));
+    publicKey = "00" + publicKey.toString();
+    checksum = (CryptoJS.SHA256(CryptoJS.SHA256(CryptoJS.enc.Hex.parse(publicKey))).toString()).substring(0, 8);
+    return "1" + base58Check(publicKey + checksum).replace(/^1*/, '');;
 }
 
-document.addEventListener('DOMContentLoaded', function () {
-    p = pseudoRandomPrivateKey();
-    publicKey = privateToPubl(p);
-    console.log(p, publicKey.toUpperCase());
-    document.getElementById('generate-btc-address').addEventListener('click', generateBTC);
-})
+function generateBTC(prefix, regex) {
+    console.log("Generating BTC address...")
+    if (regex == "") {
 
+        searched = prefix;
+        var regex = new RegExp(searched, "i");
+        do {
+            privateKey = pseudoRandomPrivateKey();
+            publicKey = privateToPubl(privateKey);
+            address = publicKeyToAddress(publicKey);
+        } while (!address.match(regex));
+    } else {
+        
+        searched = regex;
+        do {
+            privateKey = pseudoRandomPrivateKey();
+            publicKey = privateToPubl(privateKey);
+            address = publicKeyToAddress(publicKey);
+        } while (!address.match(searched));
+    }
+
+    console.log("Found: ", "\n", "PrivateKey: " + privateKey, "\n", "PublicKey: " + publicKey, "\n", "Address: " + address)
+
+}
+let document = undefined
+self.addEventListener("message", function(message) {
+    data = message.data;
+    generateBTC(data[0], data[1])
+
+}, false);
