@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="de">
+
+<head>
+    <meta charset='utf-8'>
+    <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+    <meta name="description" content="Free Vanity-BTC Generator">
+    <meta name="keywords" content="BTC, Bitcoin, Vanity Bitcoin, Cryptocurency">
+    <title>Vanity BTC</title>
+    <meta name='viewport' content='width=device-width, initial-scale=1'>
+    <link rel='stylesheet' type='text/css' media='screen' href='./styles/main.css'>
+</head>
+
+<body>
+
+    <nav>
+        <div id="top">
+            <div class="logo"><a href="./index.html">Vanity BTC</a></div>
+            <div class="" id="hamburger-layout" onclick="toggle()">
+                <div class="bar1"></div>
+                <div class="bar2"></div>
+                <div class="bar3"></div>
+            </div>
+        </div>
+        <div class="nav-links">
+                <ul id="top-navigator">
+                    <li class="current-tap"><a href='./index.html'>Home</a></li>
+                    <li><a href='./passphrase.html'>Vanity Passphrase</a></li>
+                    <li><a href='./howitworks.html'>How it works</a></li>
+                    <li><a href='./disclaimer.html'>Disclaimer</a></li>
+                    <li><a href='./impressum.html'>Impressum</a></li>
+                </ul>
+        </div>
+
+    </nav>
+
+    <main>
+        <h1>Vanity BTC Generator</h1>
+        <p>
+            Generiere eine zufälligen Vanity BTC Adresse. BTC Addressen werden mithilfe von base58 erstellt. Aus diesem
+            Grund kann
+            die Addresse nur aus Nummern und Buchstaben ausgenommen l (klein L), O (gross o) und I (gross i) bestehen.
+            Dass generieren von BTC Addressen ist exponentiel Aufänding. Aus diesem Grund sollten maximal 3-4 Buchstaben
+            verwendet werden.
+        </p>
+        <form id="vanity-form">
+            <label for="vanity-prefix">
+                Generate from Prefix (Fast)
+            </label>
+            <input class="vanity-btc-input" type="text" id="vanity-prefix" name="vanity-prefix"
+                placeholder="Vanity Prefix" pattern="^[a-zA-HJ-NP-Z0-9]*$" required>
+            <label for="vanity-regex">
+                Generate from RegEx (Slow)
+            </label>
+            <input class="vanity-btc-input" type="text" id="vanity-regex" name="vanity-regex" placeholder="Vanity RegEx"
+                pattern="^[^lOI]*$" required>
+            <label for="vanity-cpu-cores">
+                Number of CPU Cores:
+            </label>
+            <input class="vanity-btc-input" type="number" id="vanity-cpu-cores" name="vanity-cpu-cores" min="1"
+                value="1" required>
+            <input type="submit" class="button custom-button" id="generate-btc-address" value="Generate">
+        </form>
+
+        <div class="output hidden" id="vanity-output">
+            <h1>Deine Vanity-BTC Addresse: </h1>
+            <p>PrivateKey </p><p id="private-key"></p>
+            <p>PublicKey </p><p id="public-key"></p>
+            <p>BTC Address </p><p id="btc-address"></p>
+        </div>
+    </main>
+
+    <footer>
+        <p>&copy; 2020 YM</p>
+        <ul>
+            <li><a href='./disclaimer.html'>Disclaimer</a></li>
+            <li><a href='./impressum.html'>Impressum</a></li>
+        </ul>
+    </footer>
+
+    
+    </head>
+    <!--Link to script to validate inputs-->
+    <script src='./scripts/input-validator.js'></script>
+    <!--Script to generate BTC Address-->
+    <script src="./scripts/vanity-btc-worker.js"></script>
+    <!--Used to create Hamburger Layout for Mobile devices-->
+    <script src="./scripts/hamburger-layout.js"></script>
+
+
+
+</body>
+
+</html>
