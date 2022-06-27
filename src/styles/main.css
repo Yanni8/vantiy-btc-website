@@ -308,16 +308,10 @@ p figure{
 
      #vanity-output{
           max-width: 25rem;
-          display: flex;
-          flex-direction: column;
-          word-wrap: break-word;
 
      }
      footer{
           margin-top: 3rem;
-     }
-     #vanity-output.hidden{
-          display: none;
      }
       
 }
