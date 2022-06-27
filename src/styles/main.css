@@ -235,6 +235,14 @@ p figure{
 }
 
 @media screen and (max-width: 800px) {
+     .button{
+          background-color: #9a0808;
+          /* Fallback if browser doesnt support line-gradient */
+          background: linear-gradient(135deg, rgb(0, 0, 0), 70%, rgb(255, 0, 0));
+          box-shadow: 0px 0px 1rem #9a0808;
+          color: white;
+          min-height: 1.5rem;
+     }
      p {
           padding-left: 1.5rem;
           padding-right: 1.5rem;
@@ -296,6 +304,14 @@ p figure{
      }
      nav .nav-links #top-navigator.shown li{
           width: 100%;
+     }
+
+     #vanity-output{
+          max-width: 25rem;
+          display: flex;
+          flex-direction: column;
+          word-wrap: break-word;
+
      }
       
 }
