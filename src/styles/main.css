@@ -241,7 +241,7 @@ p figure{
           background: linear-gradient(135deg, rgb(0, 0, 0), 70%, rgb(255, 0, 0));
           box-shadow: 0px 0px 1rem #9a0808;
           color: white;
-          min-height: 1.5rem;
+          min-height: 2.3rem;
      }
      p {
           padding-left: 1.5rem;
@@ -312,6 +312,12 @@ p figure{
           flex-direction: column;
           word-wrap: break-word;
 
+     }
+     footer{
+          margin-top: 3rem;
+     }
+     #vanity-output.hidden{
+          display: none;
      }
       
 }
