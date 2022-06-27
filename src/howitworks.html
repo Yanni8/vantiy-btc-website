@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="de">
+
+<head>
+    <meta charset='utf-8'>
+    <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+    <meta name="description" content="Free Vanity-BTC Generator">
+    <meta name="keywords" content="BTC, Bitcoin, Vanity Bitcoin, Cryptocurency">
+    <title>Vanity BTC</title>
+    <meta name='viewport' content='width=device-width, initial-scale=1'>
+    <link rel='stylesheet' type='text/css' media='screen' href='./styles/main.css'>
+</head>
+
+<body>
+
+    <nav>
+        <div id="top">
+            <div class="logo"><a href="./index.html">Vanity BTC</a></div>
+            <div class="" id="hamburger-layout" onclick="toggle()">
+                <div class="bar1"></div>
+                <div class="bar2"></div>
+                <div class="bar3"></div>
+            </div>
+        </div>
+        <div class="nav-links">
+            <ul id="top-navigator">
+                <li><a href='./index.html'>Home</a></li>
+                <li><a href='./passphrase.html'>Vanity Passphrase</a></li>
+                <li class="current-tap"><a href='./howitworks.html'>How it works</a></li>
+                <li><a href='./disclaimer.html'>Disclaimer</a></li>
+                <li><a href='./impressum.html'>Impressum</a></li>
+            </ul>
+        </div>
+
+    </nav>
+
+    <main>
+        <h1>How it works</h1>
+        <h2>Einleiung:</h2>
+        <p>Viele Personen denken, dass beim generieren einer Bitcoin Addresse diese dann neu erstellt wird. Dabei
+            handelt es sich aber um ein Irglauben. Das erstellen einer Bitcoin Addresse ist eine reihn Mathematische
+            Operation, welche man theoretisch auch offline oder auch auf einem Papier erstellen könnte. In diesem
+            Kapitel wird etwas genauer erläutert, wie genau diese Mathematischen Operationen funktionieren und wie man
+            diese zu seinem Vorteil nutzen kann um z.B. eine Vanity Bitcoin oder eine Passphrase Addresse zu erstellen.
+            Auch gibt es viele gute Tutorial auf YT welche auch noch genauer erklären, wie eine Blockchain an sich
+            funkioniert.
+        </p>
+        <iframe width="560" height="315" src="https://www.youtube.com/embed/muIv8I6v1aE" title="YouTube video player"
+            frameborder="0"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+            allowfullscreen>
+        </iframe>
+
+        <h2>Generieren eines Private Keys</h2>
+        <p>
+            Das Generieren einer Bitcoin Addresse beginnt damit, einen random Private Key zu generieren.
+            Es ist extrem wichtig, dass dieser Key möglichst zufällig erstellt wird. Wenn angreifer in der Lage währen
+            diesen Key zu erraten sind sie dadurch auch automtisch in der Lage den Public Key und die Bitcoin Adresse zu
+            bestimmen. Dieser zufällig generierte Key wird anschlissend mithilfe des Haschingalgorythmus SHA256 in den
+            eigentlichen Private Key verwandelt.
+        </p>
+
+        <h2>Generieren des Public Keys</h2>
+        <p>
+            Im 2. Schritt wird aus dem Private Key ein Public Key generiert. Bitcoin benutzt für die generierung eines
+            Public Key ECC (Eliptic Curve Cryptography). Wie genau Eliptic Curve funktioniert wird im nächsten Kapitel
+            beschrieben. Nun erhlten wir einen Public Key, welcher mit dem Private Key in Verbindung steht. Dabei ist
+            aber wichtig zu wissen, dass man zwar jederzeit in der Lage ist vom Private Key den Public Key zu generieren
+            aber nicht umgekehrt.
+        </p>
+
+        <h1>Wie funktioniert ECC</h1>
+        <p>
+            Bei einer Eliptic Curve handelt es sich wie der Name schon sagt um einen Graph. Die Formel um diesen Graphen
+            zu erstellen lautet <b> y^2=x^3 + ax + b (mod p) </b>. In dieser Formel sind a, b und die Primzahl
+            p fest definierte Werte, welche je nach Elliptic curve varierein können. Bitcoin verwendet wich auch viele
+            andere Altcoins secp256k1. In diesem Fall gilt <b>b = 7</b> und <b>a = 0 </b>.
+        </p>
+        <figure>
+            <img class="emebdet-image" src="./resources/elliptic_curve.png" alt="Image of Elliptic Curve">
+            <figcaption>Beispiel von Secp256k1</figcaption>
+        </figure>
+        <p>
+            Der Trick dabei ist es nun. Linien zwischen 2 Punkten (oder auch Addition) oder auch die Tangente einer Line
+            zu zeichnen (Multiplikation) wenn nur
+            ein Punkt vorhanden ist. Nun kann man dies x mal wiederhohlen wobei x die Zahl des vorherig Generierten
+            Private Keys enstpricht. Das ganze startet vom Generatorpoint aus, welche eine Konstante ist. 
+        </p>
+    </main>
+
+    <footer>
+        <p>&copy; 2020 YM</p>
+        <ul>
+            <li><a href='./disclaimer.html'>Disclaimer</a></li>
+            <li><a href='./impressum.html'>Impressum</a></li>
+        </ul>
+    </footer>
+
+
+    <script src="./scripts/passphrase.js"></script>
+
+    <!--Used to create Hamburger Layout for Mobile devices-->
+    <script src="./scripts/hamburger-layout.js"></script>
+
+
+
+</body>
+
+</html>

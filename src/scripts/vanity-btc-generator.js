@@ -5,6 +5,7 @@ GX = 550662630222773436695787188951685343262506034537775941755001873603891167292
 GY = 32670510020758816978083085130507043184471273380659243275938904335757337482424n
 G = [GX, GY]
 BASE58_ALPHABET = "123456789ABCDEFGHJKLMNPQRSTUVWXYZabcdefghijkmnopqrstuvwxyz"
+importScripts("https://cdnjs.cloudflare.com/ajax/libs/crypto-js/3.1.9-1/crypto-js.js");
 
 
 
@@ -133,7 +134,6 @@ function generateBTC(prefix, regex) {
 }
 
 self.addEventListener("message", function (message) {
-    importScripts("https://cdnjs.cloudflare.com/ajax/libs/crypto-js/3.1.9-1/crypto-js.js");
     data = message.data;
     if(typeof data == "string"){
         generateFromSeed(data);
