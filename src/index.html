@@ -4,8 +4,8 @@
 <head>
     <meta charset='utf-8'>
     <meta http-equiv='X-UA-Compatible' content='IE=edge'>
-    <meta name="description" content="Free Vanity-BTC Generator">
-    <meta name="keywords" content="BTC, Bitcoin, Vanity Bitcoin, Cryptocurency">
+    <meta name="description" content="Generiere eine Valide Bitcoinadresse, welche eine custom Message beinhaltet">
+    <meta name="keywords" content="BTC, Bitcoin, Vanity Bitcoin, Cryptocurency, Altcoins">
     <title>Vanity BTC</title>
     <meta name='viewport' content='width=device-width, initial-scale=1'>
     <link rel='stylesheet' type='text/css' media='screen' href='./styles/main.css'>
@@ -23,13 +23,13 @@
             </div>
         </div>
         <div class="nav-links">
-                <ul id="top-navigator">
-                    <li class="current-tap"><a href='./index.html'>Home</a></li>
-                    <li><a href='./passphrase.html'>Vanity Passphrase</a></li>
-                    <li><a href='./howitworks.html'>How it works</a></li>
-                    <li><a href='./disclaimer.html'>Disclaimer</a></li>
-                    <li><a href='./impressum.html'>Impressum</a></li>
-                </ul>
+            <ul id="top-navigator">
+                <li class="current-tap"><a href='./index.html'>Home</a></li>
+                <li><a href='./passphrase.html'>Vanity Passphrase</a></li>
+                <li><a href='./howitworks.html'>How it works</a></li>
+                <li><a href='./disclaimer.html'>Disclaimer</a></li>
+                <li><a href='./impressum.html'>Impressum</a></li>
+            </ul>
         </div>
 
     </nav>
@@ -37,10 +37,12 @@
     <main>
         <h1>Vanity BTC Generator</h1>
         <p>
-            Generieren einer zufälligen Vanity BTC Adresse. BTC Addressen werden mithilfe von base58 erstellt. Aus diesem
+            Generieren einer zufälligen Vanity BTC Adresse. BTC Addressen werden mithilfe von base58 erstellt. Aus
+            diesem
             Grund kann
             die Adresse nur aus Nummern und Buchstaben ausgenommen l (klein L), O (gross o) und I (gross i) bestehen.
-            Dass generieren von BTC Addressen ist exponentiell aufwändig. Aus diesem Grund sollten maximal 3-4 Buchstaben
+            Dass generieren von BTC Addressen ist exponentiell aufwändig. Aus diesem Grund sollten maximal 3-4
+            Buchstaben
             verwendet werden.
         </p>
         <form id="vanity-form">
@@ -64,9 +66,14 @@
 
         <div class="output hidden" id="vanity-output">
             <h1>Deine Vanity-BTC Addresse: </h1>
-            <p>PrivateKey </p><p id="private-key"></p>
-            <p>PublicKey </p><p id="public-key"></p>
-            <p>BTC Address </p><p id="btc-address"></p>
+            <h2 class="warning">Warnung!</h2>
+            <p class="warning">Wir übernehmen keine Verantwortung für falsch generierte Bitcoin Addressen.</p>
+            <p>PrivateKey </p>
+            <p id="private-key"></p>
+            <p>PublicKey </p>
+            <p id="public-key"></p>
+            <p>BTC Address </p>
+            <p id="btc-address"></p>
         </div>
     </main>
 
@@ -78,7 +85,7 @@
         </ul>
     </footer>
 
-    
+
     </head>
     <!--Link to script to validate inputs-->
     <script src='./scripts/input-validator.js'></script>
