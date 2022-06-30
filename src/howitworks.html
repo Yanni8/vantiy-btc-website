@@ -45,7 +45,7 @@
             Auch gibt es viele gute Tutorial auf YT, welche auch noch genauer erklären, wie eine Blockchain an sich
             funkioniert.
         </p>
-        <iframe src="https://www.youtube.com/embed/muIv8I6v1aE" title="YouTube video player" frameborder="0"
+        <iframe src="https://www.youtube.com/embed/muIv8I6v1aE" title="YouTube video player"
             allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
             allowfullscreen>
         </iframe>
@@ -54,7 +54,8 @@
         <p>
             Das Generieren einer Bitcoin Adresse beginnt damit, einen random Private Key zu generieren.
             Es ist extrem wichtig, dass dieser Key möglichst zufällig erstellt wird. Wenn Angreifer in der Lage wären
-            diesen Key zu erraten, sind sie dadurch auch automtisch in der Lage den Public Key und die Bitcoin Adresse zu
+            diesen Key zu erraten, sind sie dadurch auch automtisch in der Lage den Public Key und die Bitcoin Adresse
+            zu
             bestimmen. Dieser zufällig generierte Key wird anschliessend mit Hilfe des Haschingalgorythmus SHA256 in den
             eigentlichen Private Key verwandelt.
         </p>
@@ -62,7 +63,8 @@
         <h2>Generieren des Public Keys</h2>
         <p>
             Im 2. Schritt wird aus dem Private Key ein Public Key generiert. Bitcoin benutzt dafür die Generierung eines
-            Public Key ECC (Elliptic Curve Cryptography). Wie genau Elliptic Curve funktioniert, wird im nächsten Kapitel
+            Public Key ECC (Elliptic Curve Cryptography). Wie genau Elliptic Curve funktioniert, wird im nächsten
+            Kapitel
             beschrieben. Nun erhalten wir einen Public Key, welcher mit dem Private Key in Verbindung steht. Dabei ist
             aber wichtig zu wissen, dass man zwar jederzeit in der Lage ist vom Private Key den Public Key zu generieren
             aber nicht umgekehrt.
@@ -70,7 +72,8 @@
 
         <h1>Wie funktioniert ECC</h1>
         <p>
-            Bei einer Elliptic Curve handelt es sich, wie der Name schon sagt, um einen Graphen. Die Formel um diesen Graphen
+            Bei einer Elliptic Curve handelt es sich, wie der Name schon sagt, um einen Graphen. Die Formel um diesen
+            Graphen
             zu erstellen lautet <b> y**2=x**3 + ax + b (mod p) </b>. In dieser Formel sind a, b und die Primzahl
             p fest definierte Werte, welche je nach Elliptic Curve varieren können. Bitcoin verwendet wie auch viele
             andere Altcoins secp256k1. In diesem Fall gilt <b>b = 7</b> und <b>a = 0 </b>.
@@ -80,15 +83,19 @@
             <figcaption>Beispiel von Secp256k1</figcaption>
         </figure>
         <p>
-            Der Trick dabei ist es nun, Linien zwischen 2 Punkten (oder auch Addition) oder auch die Tangente einer Linie
+            Der Trick dabei ist es nun, Linien zwischen 2 Punkten (oder auch Addition) oder auch die Tangente einer
+            Linie
             zu zeichnen (Multiplikation) wenn nur
             ein Punkt vorhanden ist. Nun kann man dies x mal wiederholen, wobei x die Zahl des vorherig generierten
-            Private Keys enstpricht. Das Ganze startet vom Generatorpoint aus, welcher eine Konstante ist. Nun könnte man
-            sich natürlich fragen, warum ECC denn so sicher ist. Wenn man den Gerator Point hat und der Private Schlüssel
+            Private Keys enstpricht. Das Ganze startet vom Generatorpoint aus, welcher eine Konstante ist. Nun könnte
+            man
+            sich natürlich fragen, warum ECC denn so sicher ist. Wenn man den Gerator Point hat und der Private
+            Schlüssel
             nur daraus besteht den Gerator Point zu multiplizieren, gibt es eigentlich keinen Grund, den Generator
             Point so häufig zu multiplizieren, bis man den Public Key erhält. Allerdings vergisst man dabei einen
             wichtigen Faktor nähmlich die Zeit. Die Elliptic Curve Secp256k1 kann beispielsweise eine Private Keylänge
-            von fast 2**256 haben. Wenn man nun in der Lage wäre 2**20 Additionen pro Sekunde durchzuführen (~1 Million),
+            von fast 2**256 haben. Wenn man nun in der Lage wäre 2**20 Additionen pro Sekunde durchzuführen (~1
+            Million),
             bräuchte man dennoch 2**256 / 2**20 = 2**12.8 Sekunden. Zum Vergleich: das Universum ist geschätzt etwa 14
             Milliarde Jahre alt (~2**34). Man bräuchte also 1/3 von der Zeit seit der Enstehung der Erde, um den Secret
             Key zu bestimmen.
@@ -98,7 +105,7 @@
             Schritte braucht. Die Antwort darauf ist einfach Multiplikation. Ein gutes Beispiel dafür wäre die
             Frage, wie viele Schritte man braucht um die Zahl x**8 auszurechnen. Viele Personen würden nun mit 7
             Antworten da x**8 = x*x*x*x*x*x*x*x ist. Allerdiengs wird dabei oft vergessen, dass man x auch
-    multiplizieren kann. Die richtige Antwort wäre dann 3 <br />
+            multiplizieren kann. Die richtige Antwort wäre dann 3 <br />
             <br /><b>
                 0. x**1 = x <br /><br />
                 1. x**2 = x**1 * x**1 <br /><br />
@@ -112,7 +119,8 @@
             Key um. Dabei gibt es bei Bitcoin 2 verschiedene Keytypen komprimierte und unkomprimierte. Der Unterschied
             besteht lediglich darin, dass bei einem unkomprimierten Key auch noch die Y Koordinate zu erhalten ist. Da
             die Elliptic Curve mit der Formel y**2 = x**3 + ax + b definiert ist, ist es nicht zwindgend notwendig beide
-            Koordinaten abzuspeichern. Der unkomprimierte Key wird in Bitcon im folgenden Format dargestellt <b>04XY</b>.
+            Koordinaten abzuspeichern. Der unkomprimierte Key wird in Bitcon im folgenden Format dargestellt
+            <b>04XY</b>.
             Beim komprimierten Key kommt es darauf an, ob Y gerade oder ungerade ist. Wenn Y gerade ist, ist das Format
             <b>02X</b> und wenn Y ungerade ist, folgt das Format <b>03X</b>.
         </p>
@@ -120,7 +128,8 @@
         <h2>Erzeugen einer Adresse</h2>
         <p>
             Von einem Public Key zu einer Adresse ist es lediglich einen weiteren Schritt. In diesem wird zuerst der
-            entstandene Public Key durch SHA256 und anschlissend RIPEMD160 gehascht. Anschliessend wird eine 00 Byte (Für
+            entstandene Public Key durch SHA256 und anschlissend RIPEMD160 gehascht. Anschliessend wird eine 00 Byte
+            (Für
             Main Network) davorgesetzt. Dieser neu enstande String wird zwischengespeichert, da er später nochmals in
             dieser Form verwendet werden muss. Nun nimmt man ihn und wendet 2 mal darauf SHA256 an und nimmt die ersten
             4 Bytes, welche als Prüfzahl fungieren. Diese setzt man hinten an den zwischengespeicherten String an. Nun
@@ -132,8 +141,10 @@
         <p>
             Unter Vanity BTC stellt man sich sofort einen extrem komplexen und durchdachten Algorithmus dar.
             Allerdings stimmt das so nicht, da keiner der oben beschriebenen Schritte umkehrbar ist (Was auch extrem
-            wichtig für die Sicherheit ist). Deshalb ist man auch nicht in der Lage, auf Wunsch Adressen zu erstellen. Wenn
-            man sich dennoch dazu entscheidet, dass man eine custom Addresse haben möchte, bleibt einem fast nichts anderes
+            wichtig für die Sicherheit ist). Deshalb ist man auch nicht in der Lage, auf Wunsch Adressen zu erstellen.
+            Wenn
+            man sich dennoch dazu entscheidet, dass man eine custom Addresse haben möchte, bleibt einem fast nichts
+            anderes
             übrig, als tausende oder millionen von Adressen zu generieren, bis man eine findet, welche in das gewünschte
             Pattern passt.
         </p>
@@ -142,7 +153,8 @@
         <p>
             Auch Passphrase-BTC ist kein Hexenwerk. Dabei nimmt man lediglich den String Input vom User und Hash ihn mit
             SHA256 wodurch man dann einen Private Key erhält. Nun gilt auch hier: same Imput, same Output. Sobald
-            jemand den gleichen Key verwendet wie bereits jemand, hat dieser auch die Kontrolle über alle Bitcoins auf dem
+            jemand den gleichen Key verwendet wie bereits jemand, hat dieser auch die Kontrolle über alle Bitcoins auf
+            dem
             Konto. Aus diesem Grund sollte man als Passphrase einen langen Satz nehmen, welche nur einem selber bekannt
             ist.
         </p>

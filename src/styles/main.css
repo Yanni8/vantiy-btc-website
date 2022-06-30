@@ -246,6 +246,7 @@ p {
 iframe {
      width: 35rem;
      height: 20rem;
+     border: 0px;
 }
 .video-container {
      position: relative;
